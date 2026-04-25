@@ -8,6 +8,6 @@ __pycache__
 
 DBadminpass.txt
 .env
-
+db.sqlite3
 .DS_Store
 .vscode/
