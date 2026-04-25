@@ -1,0 +1,13 @@
+#pythonキャッシュ
+__pycache__
+*.py[cod]
+*$py.class
+
+#仮想環境
+.venv/
+
+DBadminpass.txt
+.env
+
+.DS_Store
+.vscode/

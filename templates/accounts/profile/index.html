@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザープロフィール</title>
+</head>
+<body>
+    <div class="card">
+        <h1>プロフィール詳細</h1>
+        <p><strong>ユーザー名:</strong> {{ user.username }}</p>
+        <p><strong>メールアドレス:</strong> {{ user.email|default:"未登録" }}</p>
+        <h3>ステータス</h3>
+        <p>
+            {% if user.is_active %}
+                <span class="status-badge is-active">Active (有効)</span>
+            {% endif %}
+            {% if user.is_staff %}
+                <span class="status-badge is-staff">Staff (管理画面アクセス可)</span>
+            {% endif %}
+            {% if user.is_superuser %}
+                <span class="status-badge is-superuser">Superuser (全権限)</span>
+            {% endif %}
+        </p>
+
+        <h3>所属グループ / 権限一覧</h3>
+        {% if user.groups.all %}
+            <ul>
+            {% for group in user.groups.all %}
+                <li>{{ group.name }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>所属しているグループはありません。</p>
+        {% endif %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer; padding:0;">
+            ログアウト
+            </button>
+        </form>
+        <a href="{% url 'home' %}" class="back-link">← トップページへ戻る</a>
+    </div>
+</body>
+</html>
