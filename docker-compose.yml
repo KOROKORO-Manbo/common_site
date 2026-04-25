@@ -10,5 +10,17 @@ services:
     ports:
       - "5432:5432"
 
+  web:
+    build: .  # 同じフォルダにあるDockerfileを使う
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code  # ローカルの変更を即座に反映させる（ボリュームマウント）
+    ports:
+      - "8081:8000"
+    environment:
+      - DATABASE_URL=postgres://fujiman:Tomiyasu55@db:5432/mypostgre
+    depends_on:
+      - db
+
 volumes:
   postgres_data:
