@@ -4,9 +4,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=mypostgre
-      - POSTGRES_USER=fujiman
-      - POSTGRES_PASSWORD=Tomiyasu55
+      # .env から各変数を読み込む記述に変更
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     # ports:
     #   - "5432:5432"
 
