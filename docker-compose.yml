@@ -7,8 +7,8 @@ services:
       - POSTGRES_DB=mypostgre
       - POSTGRES_USER=fujiman
       - POSTGRES_PASSWORD=Tomiyasu55
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
 
   web:
     build: .  # 同じフォルダにあるDockerfileを使う
@@ -16,9 +16,9 @@ services:
     volumes:
       - .:/code  # ローカルの変更を即座に反映させる（ボリュームマウント）
     ports:
-      - "8080:8000"
+      - "8081:8000"
     depends_on:
-      - db        # 上の db: のこと
+      - db
 
 volumes:
   postgres_data:

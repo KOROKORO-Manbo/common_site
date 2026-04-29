@@ -11,3 +11,6 @@ DBadminpass.txt
 db.sqlite3
 .DS_Store
 .vscode/
+
+#DBフォルダはgit管理外にする（フォルダ名はdocker-compose.ymlで確認）
+postgres_data/
